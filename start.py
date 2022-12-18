@@ -25,6 +25,7 @@ def run(failed_pings,secs_between_pings,secs_reboot,ping_website):
     failed_ping_count = 0
     while 1:
         if failed_ping_count > failed_pings:
+            failed_ping_count = 0
             reboot_outlet(secs_reboot)
         if(ping(ping_website)[1] == 0):
             failed_ping_count+=1
@@ -32,8 +33,8 @@ def run(failed_pings,secs_between_pings,secs_reboot,ping_website):
 
 
 if __name__ == "__main__":
-    GUIDED_MODE = 1
-    PIN_GPIO = 17
+    GUIDED_MODE = 0
+    PIN_GPIO = 4
     secs_between_pings = 60
     failed_pings =  3
     secs_reboot =  120
